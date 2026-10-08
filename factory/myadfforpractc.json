@@ -1,0 +1,25 @@
+{
+	"name": "myadfforpractc",
+	"properties": {
+		"globalParameters": {
+			"sql_ingestion_server_name": {
+				"type": "string",
+				"value": "myserverforpracnew.database.windows.net"
+			},
+			"sql_ingestion_db_name": {
+				"type": "string",
+				"value": "mydatabaseforprac"
+			}
+		},
+		"trustModeClaimForMi": {
+			"value": "Disabled",
+			"editable": true
+		}
+	},
+	"location": "eastus",
+	"identity": {
+		"type": "SystemAssigned",
+		"principalId": "52958143-8a38-493b-982c-34a410634b7b",
+		"tenantId": "5b6ecef1-a28e-4b66-8ae3-fb8d0f3406d9"
+	}
+}

@@ -1,0 +1,25 @@
+{
+	"name": "LS_SQL_SERVER",
+	"type": "Microsoft.DataFactory/factories/linkedservices",
+	"properties": {
+		"parameters": {
+			"sql_server_name": {
+				"type": "string"
+			},
+			"sql_database_name": {
+				"type": "string"
+			}
+		},
+		"annotations": [],
+		"type": "SqlServer",
+		"typeProperties": {
+			"server": "@{linkedService().sql_server_name}",
+			"database": "@{linkedService().sql_database_name}",
+			"encrypt": "mandatory",
+			"trustServerCertificate": true,
+			"authenticationType": "SQL",
+			"userName": "ramuser",
+			"encryptedCredential": "ew0KICAiVmVyc2lvbiI6ICIyMDE3LTExLTMwIiwNCiAgIlByb3RlY3Rpb25Nb2RlIjogIktleSIsDQogICJTZWNyZXRDb250ZW50VHlwZSI6ICJQbGFpbnRleHQiLA0KICAiQ3JlZGVudGlhbElkIjogIkRBVEFGQUNUT1JZQDVENEMwOUQ3LUQ2RTktNEQzMS05RDFCLTcxMTRFMDhGQzcwOV83ODk3ODkxMi1jMjU3LTQyNjctYTRhMS04ZjgwYzljNmM0ZTYiDQp9"
+		}
+	}
+}
