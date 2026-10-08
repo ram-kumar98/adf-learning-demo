@@ -1,0 +1,6 @@
+{
+	"name": "IR-ON-PREM-RAM",
+	"properties": {
+		"type": "SelfHosted"
+	}
+}

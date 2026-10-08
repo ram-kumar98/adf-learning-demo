@@ -1,0 +1,17 @@
+{
+	"name": "FileServer1",
+	"type": "Microsoft.DataFactory/factories/linkedservices",
+	"properties": {
+		"annotations": [],
+		"type": "FileServer",
+		"typeProperties": {
+			"host": "E:\\datasets\\cust",
+			"userId": "desktop-6k1p5rq\\hp",
+			"encryptedCredential": "eyJDcmVkZW50aWFsSWQiOiI1NDY1MjM2MC01NTIwLTRlNmEtYjZhZi00ZGViNDA5NTU3NGMiLCJWZXJzaW9uIjoiMi4wIiwiQ2xhc3NUeXBlIjoiTWljcm9zb2Z0LkRhdGFQcm94eS5Db3JlLkludGVyU2VydmljZURhdGFDb250cmFjdC5DcmVkZW50aWFsU1UwNkNZMTQifQ=="
+		},
+		"connectVia": {
+			"referenceName": "IR-ON-PREM-RAM",
+			"type": "IntegrationRuntimeReference"
+		}
+	}
+}
