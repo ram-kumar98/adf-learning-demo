@@ -1,0 +1,84 @@
+{
+	"$schema": "https://schema.management.azure.com/schemas/2015-01-01/deploymentParameters.json#",
+	"contentVersion": "1.0.0.0",
+	"parameters": {
+		"factoryName": {
+			"value": "myadfforpractc"
+		},
+		"AzureDatabricks1_accessToken": {
+			"value": ""
+		},
+		"AzureDatabricks2_accessToken": {
+			"value": ""
+		},
+		"FileServer1_password": {
+			"value": ""
+		},
+		"LS_ADLS_SINK_accountKey": {
+			"value": ""
+		},
+		"LS_SQL_SERVER_password": {
+			"value": ""
+		},
+		"SqlServer1_password": {
+			"value": ""
+		},
+		"SqlServer2_password": {
+			"value": ""
+		},
+		"AzureKeyVault1_properties_typeProperties_baseUrl": {
+			"value": "https://my-kv-prac01.vault.azure.net/"
+		},
+		"AzureSqlDatabase1_properties_typeProperties_server": {
+			"value": "myserverforpracnew.database.windows.net"
+		},
+		"AzureSqlDatabase1_properties_typeProperties_database": {
+			"value": "mydatabaseforprac"
+		},
+		"AzureSqlDatabase1_properties_typeProperties_userName": {
+			"value": "ramuser"
+		},
+		"FileServer1_properties_typeProperties_host": {
+			"value": "E:\\datasets\\cust"
+		},
+		"FileServer1_properties_typeProperties_userId": {
+			"value": "desktop-6k1p5rq\\hp"
+		},
+		"LS_ADLS_SINK_properties_typeProperties_url": {
+			"value": "https://targetstorageacntprac.dfs.core.windows.net/"
+		},
+		"LS_SQL_SERVER_properties_typeProperties_server": {
+			"value": "@{linkedService().sql_server_name}"
+		},
+		"LS_SQL_SERVER_properties_typeProperties_database": {
+			"value": "@{linkedService().sql_database_name}"
+		},
+		"LS_SQL_SERVER_properties_typeProperties_userName": {
+			"value": "ramuser"
+		},
+		"SqlServer1_properties_typeProperties_server": {
+			"value": "DESKTOP-6K1P5RQ\\SQLEXPRESS01"
+		},
+		"SqlServer1_properties_typeProperties_database": {
+			"value": "TrainingDB"
+		},
+		"SqlServer1_properties_typeProperties_userName": {
+			"value": "desktop-6k1p5rq\\hp"
+		},
+		"SqlServer2_properties_typeProperties_server": {
+			"value": "DESKTOP-6K1P5RQ\\SQLEXPRESS01"
+		},
+		"SqlServer2_properties_typeProperties_database": {
+			"value": "TrainingDB"
+		},
+		"SqlServer2_properties_typeProperties_userName": {
+			"value": "desktop-6k1p5rq\\hp"
+		},
+		"trigger1_properties_pl_ram_parameters_orderID": {
+			"value": "@triggerBody().event.data.orderId"
+		},
+		"trigger1_properties_typeProperties_scope": {
+			"value": "/subscriptions/fae48b13-b225-47d5-a8a2-03fb3397e6ea/resourceGroups/my-rg-pract010/providers/Microsoft.EventGrid/topics/prac-event-grid"
+		}
+	}
+}

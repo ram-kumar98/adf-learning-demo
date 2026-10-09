@@ -1,0 +1,10 @@
+{
+	"sql_ingestion_server_name": {
+		"type": "string",
+		"value": "myserverforpracnew.database.windows.net"
+	},
+	"sql_ingestion_db_name": {
+		"type": "string",
+		"value": "mydatabaseforprac"
+	}
+}
