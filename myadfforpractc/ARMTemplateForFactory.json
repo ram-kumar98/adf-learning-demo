@@ -99,13 +99,13 @@
 			"type": "string",
 			"defaultValue": "desktop-6k1p5rq\\hp"
 		},
-		"trigger1_properties_pl_ram_parameters_filename": {
+		"trigger_custom_properties_pl_ram_parameters_orderid": {
 			"type": "string",
-			"defaultValue": "@triggerBody().fileName"
+			"defaultValue": "@triggerBody().event.data.orderId"
 		},
-		"trigger1_properties_typeProperties_scope": {
+		"trigger_custom_properties_typeProperties_scope": {
 			"type": "string",
-			"defaultValue": "/subscriptions/fae48b13-b225-47d5-a8a2-03fb3397e6ea/resourceGroups/my-rg-pract010/providers/Microsoft.Storage/storageAccounts/targetstorageacntprac"
+			"defaultValue": "/subscriptions/fae48b13-b225-47d5-a8a2-03fb3397e6ea/resourceGroups/my-rg-pract010/providers/Microsoft.EventGrid/topics/my-custom-event-grid"
 		}
 	},
 	"variables": {
@@ -1150,9 +1150,9 @@
 						},
 						"userProperties": [],
 						"typeProperties": {
-							"variableName": "filename",
+							"variableName": "orderid",
 							"value": {
-								"value": "@pipeline().parameters.filename",
+								"value": "@pipeline().parameters.orderid",
 								"type": "Expression"
 							}
 						}
@@ -1162,12 +1162,12 @@
 					"elapsedTimeMetric": {}
 				},
 				"parameters": {
-					"filename": {
+					"orderid": {
 						"type": "string"
 					}
 				},
 				"variables": {
-					"filename": {
+					"orderid": {
 						"type": "String"
 					}
 				},
@@ -1569,7 +1569,7 @@
 			"dependsOn": []
 		},
 		{
-			"name": "[concat(parameters('factoryName'), '/trigger1')]",
+			"name": "[concat(parameters('factoryName'), '/trigger_custom')]",
 			"type": "Microsoft.DataFactory/factories/triggers",
 			"apiVersion": "2018-06-01",
 			"properties": {
@@ -1582,17 +1582,17 @@
 							"type": "PipelineReference"
 						},
 						"parameters": {
-							"filename": "[parameters('trigger1_properties_pl_ram_parameters_filename')]"
+							"orderid": "[parameters('trigger_custom_properties_pl_ram_parameters_orderid')]"
 						}
 					}
 				],
-				"type": "BlobEventsTrigger",
+				"type": "CustomEventsTrigger",
 				"typeProperties": {
-					"blobPathBeginsWith": "/landing/blobs/raw/cust",
-					"ignoreEmptyBlobs": true,
-					"scope": "[parameters('trigger1_properties_typeProperties_scope')]",
+					"subjectEndsWith": "",
+					"subjectBeginsWith": "/orders/",
+					"scope": "[parameters('trigger_custom_properties_typeProperties_scope')]",
 					"events": [
-						"Microsoft.Storage.BlobCreated"
+						"OrderPlaced"
 					]
 				}
 			},
