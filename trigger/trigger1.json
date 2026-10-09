@@ -8,6 +8,9 @@
 				"pipelineReference": {
 					"referenceName": "pl_ram",
 					"type": "PipelineReference"
+				},
+				"parameters": {
+					"orderID": "@triggerBody().event.data.orderId"
 				}
 			}
 		],

@@ -3,15 +3,33 @@
 	"properties": {
 		"activities": [
 			{
-				"name": "Wait1",
-				"type": "Wait",
+				"name": "Set variable1",
+				"type": "SetVariable",
 				"dependsOn": [],
+				"policy": {
+					"secureOutput": false,
+					"secureInput": false
+				},
 				"userProperties": [],
 				"typeProperties": {
-					"waitTimeInSeconds": 1
+					"variableName": "orderID",
+					"value": {
+						"value": "@pipeline().parameters.orderID",
+						"type": "Expression"
+					}
 				}
 			}
 		],
+		"parameters": {
+			"orderID": {
+				"type": "string"
+			}
+		},
+		"variables": {
+			"orderID": {
+				"type": "String"
+			}
+		},
 		"annotations": []
 	}
 }
