@@ -12,21 +12,21 @@
 				},
 				"userProperties": [],
 				"typeProperties": {
-					"variableName": "orderID",
+					"variableName": "filename",
 					"value": {
-						"value": "@pipeline().parameters.orderID",
+						"value": "@pipeline().parameters.filename",
 						"type": "Expression"
 					}
 				}
 			}
 		],
 		"parameters": {
-			"orderID": {
+			"filename": {
 				"type": "string"
 			}
 		},
 		"variables": {
-			"orderID": {
+			"filename": {
 				"type": "String"
 			}
 		},
