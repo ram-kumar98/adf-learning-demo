@@ -1,0 +1,27 @@
+{
+	"name": "TRG_test_scheduled",
+	"properties": {
+		"annotations": [],
+		"runtimeState": "Started",
+		"pipelines": [
+			{
+				"pipelineReference": {
+					"referenceName": "pl_ram",
+					"type": "PipelineReference"
+				},
+				"parameters": {
+					"orderID": "na"
+				}
+			}
+		],
+		"type": "ScheduleTrigger",
+		"typeProperties": {
+			"recurrence": {
+				"frequency": "Minute",
+				"interval": 5,
+				"startTime": "2026-10-09T20:18:00",
+				"timeZone": "India Standard Time"
+			}
+		}
+	}
+}
