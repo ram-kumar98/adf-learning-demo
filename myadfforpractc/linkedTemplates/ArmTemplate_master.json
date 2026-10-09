@@ -99,9 +99,13 @@
 			"type": "string",
 			"defaultValue": "desktop-6k1p5rq\\hp"
 		},
-		"TRG_test_scheduled_properties_pl_ram_parameters_orderID": {
+		"trigger1_properties_pl_ram_parameters_filename": {
 			"type": "string",
-			"defaultValue": "na"
+			"defaultValue": "@triggerBody().fileName"
+		},
+		"trigger1_properties_typeProperties_scope": {
+			"type": "string",
+			"defaultValue": "/subscriptions/fae48b13-b225-47d5-a8a2-03fb3397e6ea/resourceGroups/my-rg-pract010/providers/Microsoft.Storage/storageAccounts/targetstorageacntprac"
 		},
 		"containerUri": {
 			"type": "string",
@@ -199,8 +203,11 @@
 					"SqlServer2_properties_typeProperties_userName": {
 						"value": "[parameters('SqlServer2_properties_typeProperties_userName')]"
 					},
-					"TRG_test_scheduled_properties_pl_ram_parameters_orderID": {
-						"value": "[parameters('TRG_test_scheduled_properties_pl_ram_parameters_orderID')]"
+					"trigger1_properties_pl_ram_parameters_filename": {
+						"value": "[parameters('trigger1_properties_pl_ram_parameters_filename')]"
+					},
+					"trigger1_properties_typeProperties_scope": {
+						"value": "[parameters('trigger1_properties_typeProperties_scope')]"
 					}
 				}
 			},

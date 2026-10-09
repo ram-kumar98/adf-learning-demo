@@ -99,9 +99,13 @@
 			"type": "string",
 			"defaultValue": "desktop-6k1p5rq\\hp"
 		},
-		"TRG_test_scheduled_properties_pl_ram_parameters_orderID": {
+		"trigger1_properties_pl_ram_parameters_filename": {
 			"type": "string",
-			"defaultValue": "na"
+			"defaultValue": "@triggerBody().fileName"
+		},
+		"trigger1_properties_typeProperties_scope": {
+			"type": "string",
+			"defaultValue": "/subscriptions/fae48b13-b225-47d5-a8a2-03fb3397e6ea/resourceGroups/my-rg-pract010/providers/Microsoft.Storage/storageAccounts/targetstorageacntprac"
 		}
 	},
 	"variables": {
@@ -148,9 +152,9 @@
 						},
 						"userProperties": [],
 						"typeProperties": {
-							"variableName": "orderID",
+							"variableName": "filename",
 							"value": {
-								"value": "@pipeline().parameters.orderID",
+								"value": "@pipeline().parameters.filename",
 								"type": "Expression"
 							}
 						}
@@ -160,12 +164,12 @@
 					"elapsedTimeMetric": {}
 				},
 				"parameters": {
-					"orderID": {
+					"filename": {
 						"type": "string"
 					}
 				},
 				"variables": {
-					"orderID": {
+					"filename": {
 						"type": "String"
 					}
 				},
@@ -528,7 +532,7 @@
 			]
 		},
 		{
-			"name": "[concat(parameters('factoryName'), '/TRG_test_scheduled')]",
+			"name": "[concat(parameters('factoryName'), '/trigger1')]",
 			"type": "Microsoft.DataFactory/factories/triggers",
 			"apiVersion": "2018-06-01",
 			"properties": {
@@ -541,18 +545,18 @@
 							"type": "PipelineReference"
 						},
 						"parameters": {
-							"orderID": "[parameters('TRG_test_scheduled_properties_pl_ram_parameters_orderID')]"
+							"filename": "[parameters('trigger1_properties_pl_ram_parameters_filename')]"
 						}
 					}
 				],
-				"type": "ScheduleTrigger",
+				"type": "BlobEventsTrigger",
 				"typeProperties": {
-					"recurrence": {
-						"frequency": "Minute",
-						"interval": 5,
-						"startTime": "2026-10-09T20:18:00",
-						"timeZone": "India Standard Time"
-					}
+					"blobPathBeginsWith": "/landing/blobs/raw/cust",
+					"ignoreEmptyBlobs": true,
+					"scope": "[parameters('trigger1_properties_typeProperties_scope')]",
+					"events": [
+						"Microsoft.Storage.BlobCreated"
+					]
 				}
 			},
 			"dependsOn": [
