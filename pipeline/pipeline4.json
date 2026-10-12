@@ -1,0 +1,25 @@
+{
+	"name": "pipeline4",
+	"properties": {
+		"activities": [
+			{
+				"name": "Wait1",
+				"type": "Wait",
+				"dependsOn": [],
+				"userProperties": [],
+				"typeProperties": {
+					"waitTimeInSeconds": 1
+				}
+			}
+		],
+		"parameters": {
+			"start_ts": {
+				"type": "string"
+			},
+			"end_ts": {
+				"type": "string"
+			}
+		},
+		"annotations": []
+	}
+}
