@@ -106,6 +106,14 @@
 		"trigger_custom_properties_typeProperties_scope": {
 			"type": "string",
 			"defaultValue": "/subscriptions/fae48b13-b225-47d5-a8a2-03fb3397e6ea/resourceGroups/my-rg-pract010/providers/Microsoft.EventGrid/topics/my-custom-event-grid"
+		},
+		"trigger1_properties_pipeline_parameters_start_ts": {
+			"type": "string",
+			"defaultValue": "@trigger().outputs.windowStartTime"
+		},
+		"trigger1_properties_pipeline_parameters_end_ts": {
+			"type": "string",
+			"defaultValue": "@trigger().outputs.windowEndTime"
 		}
 	},
 	"variables": {
@@ -1549,26 +1557,6 @@
 			]
 		},
 		{
-			"name": "[concat(parameters('factoryName'), '/IR-ON-PREM-KESAVA')]",
-			"type": "Microsoft.DataFactory/factories/integrationRuntimes",
-			"apiVersion": "2018-06-01",
-			"properties": {
-				"type": "SelfHosted",
-				"typeProperties": {}
-			},
-			"dependsOn": []
-		},
-		{
-			"name": "[concat(parameters('factoryName'), '/IR-ON-PREM-RAM')]",
-			"type": "Microsoft.DataFactory/factories/integrationRuntimes",
-			"apiVersion": "2018-06-01",
-			"properties": {
-				"type": "SelfHosted",
-				"typeProperties": {}
-			},
-			"dependsOn": []
-		},
-		{
 			"name": "[concat(parameters('factoryName'), '/trigger_custom')]",
 			"type": "Microsoft.DataFactory/factories/triggers",
 			"apiVersion": "2018-06-01",
@@ -1598,6 +1586,91 @@
 			},
 			"dependsOn": [
 				"[concat(variables('factoryId'), '/pipelines/pl_ram')]"
+			]
+		},
+		{
+			"name": "[concat(parameters('factoryName'), '/IR-ON-PREM-KESAVA')]",
+			"type": "Microsoft.DataFactory/factories/integrationRuntimes",
+			"apiVersion": "2018-06-01",
+			"properties": {
+				"type": "SelfHosted",
+				"typeProperties": {}
+			},
+			"dependsOn": []
+		},
+		{
+			"name": "[concat(parameters('factoryName'), '/IR-ON-PREM-RAM')]",
+			"type": "Microsoft.DataFactory/factories/integrationRuntimes",
+			"apiVersion": "2018-06-01",
+			"properties": {
+				"type": "SelfHosted",
+				"typeProperties": {}
+			},
+			"dependsOn": []
+		},
+		{
+			"name": "[concat(parameters('factoryName'), '/pipeline4')]",
+			"type": "Microsoft.DataFactory/factories/pipelines",
+			"apiVersion": "2018-06-01",
+			"properties": {
+				"activities": [
+					{
+						"name": "Wait1",
+						"type": "Wait",
+						"dependsOn": [],
+						"userProperties": [],
+						"typeProperties": {
+							"waitTimeInSeconds": 1
+						}
+					}
+				],
+				"policy": {
+					"elapsedTimeMetric": {}
+				},
+				"parameters": {
+					"start_ts": {
+						"type": "string"
+					},
+					"end_ts": {
+						"type": "string"
+					}
+				},
+				"annotations": []
+			},
+			"dependsOn": []
+		},
+		{
+			"name": "[concat(parameters('factoryName'), '/trigger1')]",
+			"type": "Microsoft.DataFactory/factories/triggers",
+			"apiVersion": "2018-06-01",
+			"properties": {
+				"annotations": [],
+				"runtimeState": "Started",
+				"pipeline": {
+					"pipelineReference": {
+						"referenceName": "pipeline4",
+						"type": "PipelineReference"
+					},
+					"parameters": {
+						"start_ts": "[parameters('trigger1_properties_pipeline_parameters_start_ts')]",
+						"end_ts": "[parameters('trigger1_properties_pipeline_parameters_end_ts')]"
+					}
+				},
+				"type": "TumblingWindowTrigger",
+				"typeProperties": {
+					"frequency": "Minute",
+					"interval": 15,
+					"startTime": "2026-10-12T11:00:00Z",
+					"delay": "00:00:00",
+					"maxConcurrency": 50,
+					"retryPolicy": {
+						"intervalInSeconds": 30
+					},
+					"dependsOn": []
+				}
+			},
+			"dependsOn": [
+				"[concat(variables('factoryId'), '/pipelines/pipeline4')]"
 			]
 		}
 	]
