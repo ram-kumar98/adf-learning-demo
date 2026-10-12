@@ -107,11 +107,11 @@
 			"type": "string",
 			"defaultValue": "/subscriptions/fae48b13-b225-47d5-a8a2-03fb3397e6ea/resourceGroups/my-rg-pract010/providers/Microsoft.EventGrid/topics/my-custom-event-grid"
 		},
-		"trigger1_properties_pipeline_parameters_start_ts": {
+		"trigger_tw_properties_pipeline_parameters_start_ts": {
 			"type": "string",
 			"defaultValue": "@trigger().outputs.windowStartTime"
 		},
-		"trigger1_properties_pipeline_parameters_end_ts": {
+		"trigger_tw_properties_pipeline_parameters_end_ts": {
 			"type": "string",
 			"defaultValue": "@trigger().outputs.windowEndTime"
 		},
@@ -217,11 +217,11 @@
 					"trigger_custom_properties_typeProperties_scope": {
 						"value": "[parameters('trigger_custom_properties_typeProperties_scope')]"
 					},
-					"trigger1_properties_pipeline_parameters_start_ts": {
-						"value": "[parameters('trigger1_properties_pipeline_parameters_start_ts')]"
+					"trigger_tw_properties_pipeline_parameters_start_ts": {
+						"value": "[parameters('trigger_tw_properties_pipeline_parameters_start_ts')]"
 					},
-					"trigger1_properties_pipeline_parameters_end_ts": {
-						"value": "[parameters('trigger1_properties_pipeline_parameters_end_ts')]"
+					"trigger_tw_properties_pipeline_parameters_end_ts": {
+						"value": "[parameters('trigger_tw_properties_pipeline_parameters_end_ts')]"
 					}
 				}
 			},
